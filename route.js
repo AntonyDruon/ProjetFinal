@@ -8,6 +8,7 @@ import
   addStudent,
   deleteStudent,
 } from "./src/controller/studentController.js";
+import { toggleActiveMenu } from "./src/utils/util.js";
 
 const viewPath = path.join(process.cwd(), "src", "view");
 const dataPath = path.join(process.cwd(), "src", "Data");
@@ -20,6 +21,8 @@ const menuItems = [
 
 export const handleRoutes = (req, res) =>
 {
+  toggleActiveMenu(menuItems, req.url);
+
   if (req.url === "/")
   {
     const all = fs.readFileSync(path.join(dataPath, "users.json"), {
