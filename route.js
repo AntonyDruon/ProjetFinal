@@ -11,6 +11,7 @@ import
 
 const viewPath = path.join(process.cwd(), "src", "view");
 const dataPath = path.join(process.cwd(), "src", "Data");
+const assetsPath = path.join(process.cwd(), "src", "assets", "css");
 
 const menuItems = [
   { path: '/', title: 'List des étudiants', isActive: true },
@@ -45,6 +46,16 @@ export const handleRoutes = (req, res) =>
       }
     );
     return;
+  }
+
+  // Permet de fournir une feuille de style.
+  if (req.url === "/style")
+  {
+    const css = fs.readFileSync(path.join(assetsPath, "style.css"), { encoding: "utf8" })
+    res.writeHead(200, {
+      "Content-Type": "text/css"
+    })
+    return res.end(css)
   }
 
   if (req.url === "/addStudent")
