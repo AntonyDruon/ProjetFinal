@@ -2,8 +2,8 @@ block content
 
      mixin inputGroup(name, label)
         label
-            | {label}
-            input.form-control(name=name, type='text')
+            | #{label}
+            input(name=name, type='text')
 
     form(action="/addStudent", method="POST")
         +inputGroup("name", "Nom")
