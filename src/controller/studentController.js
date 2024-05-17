@@ -30,7 +30,18 @@ export const addStudent = (name, birth) => {
 
 export const deleteStudent = (name) => {
   try {
-    console.log("testdeleteStudent");
+    const index = students.findIndex((student) => student.name === name);
+    if (index !== -1) {
+      students.splice(index, 1);
+      fs.writeFileSync(studentFilePath, JSON.stringify(students, null, 2), {
+        encoding: "utf8",
+      });
+      console.log(`l'étudiant ${name} a été supprimé.`);
+      return true;
+    } else {
+      console.log(`l'étudiant ${name} n'existe pas.`);
+      return false;
+    }
   } catch (error) {
     console.log(error);
     return false;

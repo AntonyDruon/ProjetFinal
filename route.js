@@ -2,7 +2,10 @@ import path from "node:path";
 import fs from "node:fs";
 import querystring from "node:querystring";
 import pug from "pug";
-import { addStudent } from "./src/controller/studentController.js";
+import {
+  addStudent,
+  deleteStudent,
+} from "./src/controller/studentController.js";
 
 const viewPath = path.join(process.cwd(), "src", "view");
 const dataPath = path.join(process.cwd(), "src", "Data");
@@ -58,9 +61,34 @@ export const handleRoutes = (req, res) => {
     return;
   }
 
-  //   res.writeHead(404, { "Content-Type": "text/html" });
-  //   const page404 = fs.readFileSync(path.join(viewPath, "404.html"), {
-  //     encoding: "utf8",
-  //   });
-  //   res.end(page404);
+  if (
+    req.url.match(/^\/deleteStudent\/([a-zA-Z0-9_]+)$/) &&
+    req.method === "GET"
+  ) {
+    console.log("on rentre dans le delete student");
+    const name = req.url.split("/")[2];
+
+    const success = deleteStudent(name);
+
+    if (success) {
+      res.writeHead(301, { Location: "/" });
+      res.end();
+    } else {
+      res.writeHead(500, { "Content-Type": "text/plain" });
+      res.end("An error occurred while deleting the student");
+    }
+    return;
+  }
+
+  res.writeHead(404, { "Content-Type": "text/html" });
+  const page404 = fs.readFileSync(path.join(viewPath, "404.html"), {
+    encoding: "utf8",
+  });
+  res.end(page404);
 };
+
+//   res.writeHead(404, { "Content-Type": "text/html" });
+//   const page404 = fs.readFileSync(path.join(viewPath, "404.html"), {
+//     encoding: "utf8",
+//   });
+//   res.end(page404);
