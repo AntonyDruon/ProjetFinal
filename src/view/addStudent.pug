@@ -1,12 +1,13 @@
+extends ./layout/layout
 block content
 
-     mixin inputGroup(name, label)
+    mixin inputGroup(name, label, type)
         label
             | #{label}
-            input(name=name, type='text')
+            input(name=name, type=type)
 
-    form(action="/addStudent", method="POST")
-        +inputGroup("name", "Nom")
-        +inputGroup("birth", "Date de naissance")
+    form(action="/addNewStudent", method="POST")
+        +inputGroup("name", "Nom", "text")
+        +inputGroup("birth", "Date de naissance", "date")
 
         button(type="submit") Ajouter
