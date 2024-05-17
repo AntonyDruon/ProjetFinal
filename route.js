@@ -58,9 +58,9 @@ export const handleRoutes = (req, res) => {
     return;
   }
 
-  res.writeHead(404, { "Content-Type": "text/html" });
-  const page404 = fs.readFileSync(path.join(viewPath, "404.html"), {
-    encoding: "utf8",
-  });
-  res.end(page404);
+  //   res.writeHead(404, { "Content-Type": "text/html" });
+  //   const page404 = fs.readFileSync(path.join(viewPath, "404.html"), {
+  //     encoding: "utf8",
+  //   });
+  //   res.end(page404);
 };
