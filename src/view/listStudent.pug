@@ -1,9 +1,4 @@
-
-html
-  head
-    title List of Students
-  body
-    h1 Students
+block content
     table
         thead
             tr
@@ -16,4 +11,4 @@ html
                     td #{student.name}
                     td #{student.birth}
                     td 
-                        a(href="deleteStudent/"+student.name) X
+                        a(href="/deleteStudent/"+student.name) X
