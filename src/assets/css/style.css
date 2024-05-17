@@ -1,1 +1,21 @@
 /*style de fou furieux*/
+a {
+  text-decoration: none;
+  color: black;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.nav-active {
+  color: blue;
+  text-decoration: underline;
+}
