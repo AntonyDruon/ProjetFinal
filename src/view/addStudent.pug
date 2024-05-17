@@ -1,0 +1,12 @@
+block content
+
+     mixin inputGroup(name)
+        -
+            const nameToUpperCase = name[0];
+        label
+            | #{nameToUpperCase}
+            input.form-control(name=name, type='text')
+
+    form(action="/addStudent", method="POST")
+        +inputGroup("name")
+        +inputGroup("birth")

@@ -1,0 +1,14 @@
+block content
+    table
+        thead
+            tr
+                th Nom
+                th Date de naissance
+                th Supprimer
+        tbody
+            each student in students
+                +
+                    tr
+                        td {student.name}
+                        td {student.birth}
+                        td X
