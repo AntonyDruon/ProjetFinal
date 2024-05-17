@@ -3,14 +3,13 @@ import path from "node:path";
 import fs from "node:fs";
 import querystring from "node:querystring";
 import pug from "pug";
-import { addStudent } from "./controller.js"; // Assurez-vous que le chemin est correct
+import { addStudent } from "../src/controller/studentController.js";
 
-const port = 8080;
-const host = "localhost";
+dotenv.config();
+const { APP_LOCALHOST, APP_PORT } = process.env;
 
 const viewPath = path.join(import.meta.dirname, "src", "view");
 const dataPath = path.join(import.meta.dirname, "src", "Data");
-const assetsPath = path.join(import.meta.dirname, "src", "assets");
 
 const server = http.createServer((req, res) => {
   if (req.url === "/") {
@@ -83,5 +82,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`Server listening at http://${host}:${port}`);
+  console.log(`Server listening at http://${APP_LOCALHOST}:${APP_PORT}`);
 });
