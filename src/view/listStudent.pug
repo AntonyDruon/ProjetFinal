@@ -5,14 +5,15 @@ html
   body
     h1 Students
     table
-      thead
-        tr
-          th Name
-          th Birth Date
-          th Supprimer
-      tbody
-        each student in students
-          tr
-            td #{student.name}
-            td #{student.birth}
-            td X
+        thead
+            tr
+                th Nom
+                th Date de naissance
+                th Supprimer
+        tbody
+            each student in students
+                tr
+                    td #{student.name}
+                    td #{student.birth}
+                    td 
+                        a(href="deleteStudent/"+name) X
